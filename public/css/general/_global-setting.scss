@@ -1,0 +1,58 @@
+//GENERAL
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: auto;
+  width: 100%;
+  font-size: 14px;
+  color:$color1;
+}
+
+.ul {
+  list-style: none;
+  padding: 0;
+} 
+
+.a {
+  text-decoration: none;
+  color: #323232;
+  cursor: pointer;
+}
+
+.input {
+  outline: none;
+  border: none;
+  background-color: $color2
+}
+
+.select {
+  outline: none;
+}
+
+/*CUSTOM CLASSES*/
+
+.custom-container {
+  @include sm-up {
+    width: 90%;
+    margin: auto;
+  }
+  @include xxl-up {
+    width: 1641px;
+    margin: auto;
+  }
+}
+
+.nav-wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:2%;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.avatar-img{
+    width: 50px;
+    height: auto;
+}

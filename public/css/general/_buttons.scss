@@ -1,0 +1,28 @@
+.button{
+    cursor:pointer;
+    border:none;
+    outline:none !important;
+    background:none;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 25px;
+    width: 100%;
+}
+
+
+
+.main-btn{
+    background-color:$color3;
+    color:$color1;
+    &:hover{
+        background-color:$color1;
+        color:$color2;
+    }
+}
+
+.reverse-btn{
+    background-color:$color1;
+    color:$color2;
+
+}
