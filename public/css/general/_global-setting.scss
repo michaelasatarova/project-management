@@ -10,26 +10,23 @@ body {
   color:$color1;
 }
 
-.ul {
+ul {
   list-style: none;
   padding: 0;
 } 
 
-.a {
+a {
   text-decoration: none;
   color: #323232;
   cursor: pointer;
 }
 
-.input {
+input, select, textarea {
   outline: none;
   border: none;
   background-color: $color2
 }
 
-.select {
-  outline: none;
-}
 
 /*CUSTOM CLASSES*/
 

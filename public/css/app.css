@@ -25,6 +25,33 @@
   color: #fff;
 }
 
+.wrapper-tools, .wrapper-tools-small {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper-tools .tool, .wrapper-tools-small .tool {
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.wrapper-tools-small .tool {
+  padding: 5px 8px;
+  border-radius: 50%;
+  font-size: 10px;
+  margin: 2px;
+}
+
 html {
   font-size: 0.75rem;
 }
@@ -67,25 +94,21 @@ body {
   color: #0c1e40;
 }
 
-.ul {
+ul {
   list-style: none;
   padding: 0;
 }
 
-.a {
+a {
   text-decoration: none;
   color: #323232;
   cursor: pointer;
 }
 
-.input {
+input, select, textarea {
   outline: none;
   border: none;
   background-color: #fff;
-}
-
-.select {
-  outline: none;
 }
 
 /*CUSTOM CLASSES*/
@@ -118,6 +141,50 @@ body {
 .avatar-img {
   width: 50px;
   height: auto;
+}
+
+.member-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 992px) {
+  .member-container {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.member-container .member {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  padding: 40px 20px;
+  border: 4px solid #ea6b15;
+  border-radius: 25px;
+}
+
+@media (max-width: 576px) {
+  .member-container .member {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.member-container .member .left-panel, .member-container .member .right-panel {
+  text-align: center;
+}
+
+.member-container .member .project-settings {
+  display: -ms-grid;
+  display: grid;
+  width: 100%;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
 }
 
 .projects-wrapper {
@@ -161,19 +228,5 @@ body {
 
 .projects-wrapper .project-summary .deadline {
   font-weight: bold;
-}
-
-.projects-wrapper .project-summary .wrapper-tools {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.projects-wrapper .project-summary .wrapper-tools .tool {
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  margin: 2px;
-  cursor: pointer;
 }
 /*# sourceMappingURL=app.css.map */
