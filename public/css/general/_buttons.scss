@@ -20,6 +20,14 @@
         color:$color2;
     }
 }
+.main-btn-border{
+    border: $thickness solid $color3;
+    color:$color3;
+    &:hover{
+        border: $thickness solid $color1;
+        color:$color1;
+    }
+}
 
 .reverse-btn{
     background-color:$color1;
