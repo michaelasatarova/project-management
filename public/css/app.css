@@ -251,6 +251,8 @@ input[type='checkbox'] {
 .popup-form {
   display: none;
   position: absolute;
+  top: 0;
+  left: 0;
   /*   display: flex; */
   -webkit-box-pack: center;
       -ms-flex-pack: center;
