@@ -11,5 +11,6 @@ router.post('/logout',  userController.logout)
 
 // project related routs
 router.post('/create-project', projectController.createProject)
+router.get('/test', projectController.getAllProjects)
 
 module.exports = router
