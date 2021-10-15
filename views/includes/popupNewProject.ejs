@@ -1,0 +1,43 @@
+<!--popup add new project-->
+<div id="modal-add-project" class="popup-form"> <div class="bg-modal" onclick="toggleModal()"></div>
+<form class="form-modal" action="/create-project" method="post">
+    <div class="h3 text-center pb-3">Add new post</div>
+    <label class="label" for="project_name">Project Name</label>
+    <input type="text" name="project_name"/>
+    <label class="label" for="project_description">Write a short description</label>
+    <input type="text" name="project_description"/>
+    <label class="label" for="deadline">Deadline</label>
+    <input type="date" name="deadline"/>
+    <label class="label" for="status">Status</label>
+    <select name="status">
+        <option value="new">New</option>
+        <option value="waiting">Waiting</option>
+        <option value="todo">To Do</option>
+        <option value="done">Done</option>
+    </select>
+
+    <p class="label">Choose who should work on this project</p>
+    <div class="choice">
+        <div class="flex">
+            <input type="checkbox" name="coder" value="michaela"/>
+            <p class="label" for="coder">Michaela</p>
+        </div>
+        <div class="flex">
+            <input type="checkbox" name="coder" value="henry"/>
+            <p class="label" for="coder">Henry</p>
+        </div>
+        <div class="flex">
+            <input type="checkbox" name="coder" value="Adrian"/>
+            <p class="label" for="coder">Adrian</p>
+        </div>
+        <div class="flex">
+            <input type="checkbox" name="coder" value="Nadine"/>
+            <p class="label" for="coder">Nadine</p>
+        </div>
+    </div>
+    <div class="btn-group">
+        <button class="button main-btn" type="submit">SUBMIT</button>
+       <!--  <button class="button main-btn-border" onclick="toggleModal(e)">CANCLE</button> -->
+    </div>
+</form>
+</div>

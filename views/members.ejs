@@ -2,22 +2,19 @@
 <!--header-->
 
 
-    <div class="custom-container px-3 py-5">
-        <h1 class="main-title text-center fw-bold my-3">Binaryone task management</h1>
-        <div class="nav-wrapper">
-            <div class="button main-btn h3 my-3">PROJECTS</div>
-            <div class="button main-btn h3 my-3">MEMBERS</div>
-        </div>
-        <div class="button main-btn h3"> ADD NEW MEMBER</div>
-    </div>
+
+<%- include('includes/navi')%>
+<!--navi-->
+
 
     <div class="custom-container">
         <div class="member-container">
-            <!--MEMBER-->    
+            <!--MEMBER-->   
+            <% data.forEach(function(member) { %>
             <div class="member">
                 <div class="left-panel">
                     <img class="avatar-img" src="public/images/michaela.png" alt="binaryone">
-                    <div  class="h3  my-4">Name</div>
+                    <div  class="h3  my-4"><%= member.username %></div>
                 </div>
                 <div class="right-panel">
                     <div class="h3">Working on:</div>
@@ -75,69 +72,7 @@
                     </div>
                 </div>
             </div>
-
-                        <!--MEMBER-->    
-                        <div class="member">
-                            <div class="left-panel">
-                                <img class="avatar-img" src="public/images/michaela.png" alt="binaryone">
-                                <div  class="h3  my-4">Name</div>
-                            </div>
-                            <div class="right-panel">
-                                <div class="h3">Working on:</div>
-                                <ul>
-                                    <li class="project-settings">Solicare - implementing xy
-                                        <div class="wrapper-tools-small mx-3">
-                                            <div class="tool bg-success">
-                                               <i class="fas fa-edit"></i>  
-                                            </div>
-                                            <div class="tool bg-danger">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li  class="project-settings">Zidatech - lorem ipsum text 
-                                        <div class="wrapper-tools-small mx-3">
-                                            <div class="tool bg-success">
-                                               <i class="fas fa-edit"></i>  
-                                            </div>
-                                            <div class="tool bg-danger">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li  class="project-settings">Lorem - short description
-                                        <div class="wrapper-tools-small mx-3">
-                                            <div class="tool bg-success">
-                                               <i class="fas fa-edit"></i>  
-                                            </div>
-                                            <div class="tool bg-danger">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="left-panel">
-                                <div class="wrapper-tools">
-                                    <div class="tool bg-success">
-                                       <i class="fas fa-edit"></i>  
-                                    </div>
-                                    <div class="tool bg-danger">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </div>
-                                    <div class="tool bg-primary d-block d-sm-none">
-                                        <i class="fas fa-plus"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="right-panel">
-                                <div class="wrapper-tools">
-                                    <div class="tool bg-primary d-none d-sm-block">
-                                        <i class="fas fa-plus"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <% }) %>
 
         </div>
     </div>

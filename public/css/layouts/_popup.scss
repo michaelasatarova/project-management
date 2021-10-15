@@ -28,6 +28,9 @@
     }
     .choice {
       margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding-bottom: 2rem;
       .flex {
         display: flex;
         justify-content: flex-start;
@@ -36,7 +39,6 @@
     }
     .btn-group {
       position: absolute;
-      bottom: 5rem;
       width: 85%;
       display: grid;
       grid-template-columns: repeat(1, 1fr);

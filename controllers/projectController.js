@@ -4,6 +4,7 @@ const Project = require('../models/Project')
 exports.createProject = function(req, res) {
     let project = new Project(req.body, req.session.user._id)
     project.createProject().then(function() {
+      req.flash("success", "New post successfully created.")
       res.redirect("/")
     }).catch(function(errors) {
       res.send(errors)
@@ -15,16 +16,18 @@ exports.createProject = function(req, res) {
 exports.delete = function(req, res){
     Project.delete(req.params.id).then(() =>{
         req.session.save(() => {res.redirect("/")})
+    }).catch(function() {
+      res.send("Err")
     })
 }
   
 //show edit item according to id
 exports.viewEditScreen = function(req, res){
-/*     console.log("tu som", req.params.id) */
     let test = Project.viewEditScreen(req.params.id).then((data) =>{
         req.session.save(() => {res.render("editProjectForm", {data: data})
-/*         console.log("test",data) */
-    })
+      })
+    }).catch(function() {
+      res.send("Err")
     })
 }
 
@@ -34,9 +37,8 @@ exports.edit = function(req, res){
     project.update(req.params.id).then(()=>{
         res.redirect("/")
    }).catch(() =>{
-    res.send("fail")
+    res.send("Err")
    })
-   console.log("toto dostanes", project)
 }
 
 

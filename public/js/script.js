@@ -4,4 +4,9 @@ function toggleModal(){
   modalProject.classList.toggle("d-flex");
 }
 
+function toggleModalUser(){
+  const modalProject = document.getElementById("modal-add-user");
+  modalProject.classList.toggle("d-flex");
+}
+
 

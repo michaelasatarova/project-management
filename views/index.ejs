@@ -1,221 +1,47 @@
 <%- include('includes/header')%>
 <!-- header included here -->
 
-<!--popup add new project-->
-<div id="modal-add-project" class="popup-form">
-  <div class="bg-modal" onclick="toggleModal()"></div>
-  <form class="form-modal" action="/create-project" method="post">
-    <div>Add new post</div>
-    <label class="label" for="project_name">Project Name</label>
-    <input type="text" name="project_name" />
-    <label class="label" for="project_description"
-      >Write a short description</label
-    >
-    <input type="text" name="project_description" />
-    <label class="label" for="deadline">Deadline</label>
-    <input type="date" name="deadline" />
-    <label class="label" for="status">Status</label>
-    <select name="status">
-      <option value="new">New</option>
-      <option value="waiting">Waiting</option>
-      <option value="todo">To Do</option>
-      <option value="done">Done</option>
-    </select>
 
-    <p class="label">Choose who should work on this project</p>
-    <div class="choice">
-      <div class="flex">
-        <input type="checkbox" name="coder" value="michaela" />
-        <p class="label" for="coder">Michaela</p>
-      </div>
-      <div class="flex">
-        <input type="checkbox" name="coder" value="henry" />
-        <p class="label" for="coder">Henry</p>
-      </div>
-      <div class="flex">
-        <input type="checkbox" name="coder" value="Adrian" />
-        <p class="label" for="coder">Adrian</p>
-      </div>
-      <div class="flex">
-        <input type="checkbox" name="coder" value="Nadine" />
-        <p class="label" for="coder">Nadine</p>
-      </div>
-    </div>
-    <div class="btn-group">
-      <button class="button main-btn" type="submit">SUBMIT</button>
-      <!--  <button class="button main-btn-border" onclick="toggleModal(e)">CANCLE</button> -->
-    </div>
-  </form>
-</div>
 
-<!--popup edit existing project-->
-<div id="modal-edit-project" class="popup-form">
-  <div class="bg-modal" onclick="toggleModalEdit()"></div>
-  <form class="form-modal" action="/create-project" method="post">
-    <div>Edit post</div>
-    <label class="label" for="project_name">Project Name</label>
-    <input type="text" name="project_name" />
-    <label class="label" for="project_description">Write a short description</label>
-    <input type="text" name="project_description" />
-    <label class="label" for="deadline">Deadline</label>
-    <input type="date" name="deadline" />
-    <label class="label" for="status">Status</label>
-    <select name="status">
-      <option value="new">New</option>
-      <option value="waiting">Waiting</option>
-      <option value="todo">To Do</option>
-      <option value="done">Done</option>
-    </select>
-
-    <p class="label">Choose who should work on this project</p>
-    <div class="choice">
-      <div class="flex">
-        <input type="checkbox" name="coder" value="michaela" />
-        <p class="label" for="coder">Michaela</p>
-      </div>
-      <div class="flex">
-        <input type="checkbox" name="coder" value="henry" />
-        <p class="label" for="coder">Henry</p>
-      </div>
-      <div class="flex">
-        <input type="checkbox" name="coder" value="Adrian" />
-        <p class="label" for="coder">Adrian</p>
-      </div>
-      <div class="flex">
-        <input type="checkbox" name="coder" value="Nadine" />
-        <p class="label" for="coder">Nadine</p>
-      </div>
-    </div>
-    <div class="btn-group">
-      <button class="button main-btn" type="submit">EDIT</button>
-      <!--  <button class="button main-btn-border" onclick="toggleModal(e)">CANCLE</button> -->
-    </div>
-  </form>
-</div>
 
 <!--body-->
-<div class="custom-container px-3 py-5">
-  <h1 class="main-title text-center fw-bold my-3">Binaryone task management</h1>
-  <div class="nav-wrapper">
-    <div class="button main-btn h3 my-3">PROJECTS</div>
-    <div class="button main-btn h3 my-3">MEMBERS</div>
-  </div>
-  <div class="button main-btn h3" onclick="toggleModal()">ADD NEW PROJECT</div>
-</div>
+
+<%- include('includes/navi')%>
+<!-- navi included here -->
 
 <div class="custom-container">
-  <div class="projects-wrapper">
-    <div class="projects-status">
-      <div class="h3 button reverse-btn">TO DO</div>
-
-      <% data.forEach(function(item) { %>
-        <% if (item.status == 'todo') { %>
-        <div class="project-summary">
-          <img class="avatar-img" src="/images/michaela.png" alt="binaryone" />
-          <div class="project-description">
-            <div class="h3"><%= item.project_name %></div>
-
-            <div class="project-description"><%= item.project_description %></div>
-            <br />
-            <div class="deadline"><%= item.deadline %></div>
-          </div>
-          <div class="wrapper-tools">
-            <div onclick="toggleModalEdit()">
-              <a href="/project/<%= item._id %>/edit" class="tool bg-success">
-                <i class="fas fa-edit"></i>
-              </a>
-            </div>
-            <form action="/project/<%= item._id %>/delete" method="POST" class="tool bg-danger">
-            <button><i class="fas fa-trash-alt"></i></button> 
-            </form>
-          </div>
-        </div> 
-        <% } %>
-      <% }) %>
-
-    </div>
-    <div class="projects-status">
-      <div class="h3 button reverse-btn">WAITING</div>
-      <% data.forEach(function(item) { %>
-        <% if (item.status == 'waiting') { %>
-        <div class="project-summary">
-          <img class="avatar-img" src="/images/michaela.png" alt="binaryone" />
-          <div class="project-description">
-            <div class="h3"><%= item.project_name %></div>
-
-            <div class="project-description"><%= item.project_description %></div>
-            <br />
-            <div class="deadline"><%= item.deadline %></div>
-          </div>
-          <div class="wrapper-tools">
-            <div onclick="toggleModalEdit()">
-              <a href="/project/<%= item._id %>/edit" class="tool bg-success">
-                <i class="fas fa-edit"></i>
-              </a>
-            </div>
-            <form action="/project/<%= item._id %>/delete" method="POST" class="tool bg-danger">
-            <button><i class="fas fa-trash-alt"></i></button> 
-            </form>
-          </div>
-        </div> 
-        <% } %>
-      <% }) %>
-    </div>
-    <div class="projects-status">
-      <div class="h3 button reverse-btn">NEW</div>
-      <% data.forEach(function(item) { %>
-        <% if (item.status == 'new') { %>
-        <div class="project-summary">
-          <img class="avatar-img" src="/images/michaela.png" alt="binaryone" />
-          <div class="project-description">
-            <div class="h3"><%= item.project_name %></div>
-
-            <div class="project-description"><%= item.project_description %></div>
-            <br />
-            <div class="deadline"><%= item.deadline %></div>
-          </div>
-          <div class="wrapper-tools">
-            <div onclick="toggleModalEdit()">
-              <a href="/project/<%= item._id %>/edit" class="tool bg-success">
-                <i class="fas fa-edit"></i>
-              </a>
-            </div>
-            <form action="/project/<%= item._id %>/delete" method="POST" class="tool bg-danger">
-            <button><i class="fas fa-trash-alt"></i></button> 
-            </form>
-          </div>
-        </div> 
-        <% } %>
-      <% }) %>
-    </div>
-    <div class="projects-status">
-      <div class="h3 button reverse-btn">DONE</div>
-      <% data.forEach(function(item) { %>
-        <% if (item.status == 'done') { %>
-        <div class="project-summary">
-          <img class="avatar-img" src="/images/michaela.png" alt="binaryone" />
-          <div class="project-description">
-            <div class="h3"><%= item.project_name %></div>
-
-            <div class="project-description"><%= item.project_description %></div>
-            <br />
-            <div class="deadline"><%= item.deadline %></div>
-          </div>
-          <div class="wrapper-tools">
-            <div onclick="toggleModalEdit()">
-              <a href="/project/<%= item._id %>/edit" class="tool bg-success">
-                <i class="fas fa-edit"></i>
-              </a>
-            </div>
-            <form action="/project/<%= item._id %>/delete" method="POST" class="tool bg-danger">
-            <button><i class="fas fa-trash-alt"></i></button> 
-            </form>
-          </div>
-        </div> 
-        <% } %>
-      <% }) %>
-    </div>
-  </div>
+	<div class="projects-wrapper">
+		<% statusArray.forEach(function(status) { %>
+			<div class="projects-status">
+				<div class="h3 button reverse-btn uppercase"><%= status %></div>
+				<% data.forEach(function(item) { %>
+					<% if (item.status == status) { %>
+						<div class="project-summary">
+							<img class="avatar-img" src="/images/michaela.png" alt="binaryone"/>
+							<div class="project-description">
+								<div class="h3"><%= item.project_name %></div>
+								<div class="project-description"><%= item.project_description %></div>
+								<br/>
+								<div class="deadline"><%= item.deadline %></div>
+							</div>
+							<div class="wrapper-tools">
+								<a href="/project/<%= item._id %>/edit">
+									<button class="button mx-1  tool bg-success">
+										<i class="fas fa-edit"></i>
+									</button>
+								</a>
+								<form action="/project/<%= item._id %>/delete" method="POST">
+									<button class="button  tool bg-danger">
+										<i class="fas fa-trash-alt"></i>
+									</button>
+								</form>
+							</div>
+						</div>
+					<% } %>
+				<% }) %>
+			</div>
+		<% }) %>
+	</div>
 </div>
 
 <!--footer included here-->

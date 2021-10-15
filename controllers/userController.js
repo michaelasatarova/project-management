@@ -61,8 +61,11 @@ exports.home = function(req, res) {
     project.getAllProjects().then((data)=>{
        /*  console.log("toto su data z Home",data) */
         if(data){
-        /*   console.log("toto su data",data) */
-          res.render('index', {data: data} )
+          console.log("toto su data",data)
+          res.render('index', {
+            data: data,
+            statusArray: ['todo', 'waiting', 'new', 'done' ]
+          } )
         }else{
           res.send("on this page are no data")
         }
