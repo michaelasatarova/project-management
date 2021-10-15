@@ -4,16 +4,44 @@ const Project = require('../models/Project')
 exports.createProject = function(req, res) {
     let project = new Project(req.body, req.session.user._id)
     project.createProject().then(function() {
-      res.send("New project created.")
+      res.redirect("/")
     }).catch(function(errors) {
       res.send(errors)
     })
   }
 
 
+  //delete item according to id
+exports.delete = function(req, res){
+    Project.delete(req.params.id).then(() =>{
+        req.session.save(() => {res.redirect("/")})
+    })
+}
   
-  //get all projects from db
- exports.getAllProjects =  function(req, res){
+//show edit item according to id
+exports.viewEditScreen = function(req, res){
+/*     console.log("tu som", req.params.id) */
+    let test = Project.viewEditScreen(req.params.id).then((data) =>{
+        req.session.save(() => {res.render("editProjectForm", {data: data})
+/*         console.log("test",data) */
+    })
+    })
+}
+
+//update edit item according to id
+exports.edit = function(req, res){
+   let project = new Project(req.body, req.params.id)
+    project.update(req.params.id).then(()=>{
+        res.redirect("/")
+   }).catch(() =>{
+    res.send("fail")
+   })
+   console.log("toto dostanes", project)
+}
+
+
+  //get all projects from db but it is done in exports.home
+/*  exports.getAllProjects =  function(req, res){
     let project = new Project(req.body)
     project.getAllProjects().then((data)=>{
         console.log("toto su data z Controllera",data)
@@ -21,5 +49,5 @@ exports.createProject = function(req, res) {
     }).catch((err)=>{
         res.send("problem")
     })
-} 
+}  */
  

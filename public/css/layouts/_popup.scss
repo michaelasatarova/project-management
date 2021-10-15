@@ -1,4 +1,4 @@
-.popup-form {
+.popup-form, .popup-form-edit {
   display: none;
   position: absolute;
   top: 0;
@@ -44,4 +44,8 @@
     }
 
   }
+}
+
+.popup-form-edit{
+display: flex;
 }

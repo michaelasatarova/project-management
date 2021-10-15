@@ -1,0 +1,52 @@
+<%- include('includes/header')%>
+<!-- header included here -->
+
+<!--popup edit existing project-->
+<div  class="popup-form-edit">
+  <div class="bg-modal"></div>
+  <form class="form-modal" action="/project/<%= data._id %>/edit" method="POST">
+    <div>Edit post</div>
+    <label class="label" for="project_name">Project Name</label>
+    <input type="text" name="project_name"  value="<%= data.project_name %>" />
+    <label class="label" for="project_description">Write a short description</label>
+    <input type="text" name="project_description" value="<%= data.project_description %>" />
+    <label class="label" for="deadline">Deadline</label>
+    <input type="date" name="deadline" value="<%= data.deadline %>" />
+    <label class="label" for="status">Status</label>
+    <select name="status">
+      <option value="new" <% if(data.status == "new"){ %> selected <%}%>  >New</option>
+      <option value="waiting"  <% if(data.status == "waiting"){ %> selected <%}%>>Waiting</option>
+      <option value="todo"  <% if(data.status == "todo"){ %> selected <%}%> >To Do</option>
+      <option value="done"  <% if(data.status == "done"){ %> selected <%}%> >Done</option>
+    </select>
+
+    <p class="label">Choose who should work on this project</p>
+    <div class="choice">
+      <div class="flex">
+        <input type="checkbox" name="coder" value="michaela" />
+        <p class="label" for="coder">Michaela</p>
+      </div>
+      <div class="flex">
+        <input type="checkbox" name="coder" value="henry" />
+        <p class="label" for="coder">Henry</p>
+      </div>
+      <div class="flex">
+        <input type="checkbox" name="coder" value="Adrian" />
+        <p class="label" for="coder">Adrian</p>
+      </div>
+      <div class="flex">
+        <input type="checkbox" name="coder" value="Nadine" />
+        <p class="label" for="coder">Nadine</p>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button class="button main-btn" type="submit">EDIT</button>
+      <!--  <button class="button main-btn-border" onclick="toggleModal(e)">CANCLE</button> -->
+    </div>
+  </form>
+</div>
+
+
+
+<!--footer included here-->
+<%- include('includes/footer')%>

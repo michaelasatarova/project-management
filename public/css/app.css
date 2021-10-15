@@ -161,6 +161,42 @@ input[type='checkbox'] {
   height: auto;
 }
 
+.login {
+  background-image: url("../../images/img-intro-home.png");
+  background-size: cover;
+  height: 100vh;
+  padding: 15%;
+}
+
+@media (max-width: 576px) {
+  .login {
+    padding: 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.login .form-login {
+  width: 500px;
+  background-color: #fff;
+  border: 1px solid #0c1e40;
+  padding: 50px;
+}
+
+@media (max-width: 576px) {
+  .login .form-login {
+    width: 100%;
+    padding: 25px;
+  }
+}
+
 .member-container {
   display: -ms-grid;
   display: grid;
@@ -248,7 +284,7 @@ input[type='checkbox'] {
   font-weight: bold;
 }
 
-.popup-form {
+.popup-form, .popup-form-edit {
   display: none;
   position: absolute;
   top: 0;
@@ -264,14 +300,14 @@ input[type='checkbox'] {
   height: 100vh;
 }
 
-.popup-form .bg-modal {
+.popup-form .bg-modal, .popup-form-edit .bg-modal {
   width: 100%;
   height: 100%;
   background-color: rgba(12, 30, 64, 0.5);
   position: absolute;
 }
 
-.popup-form .form-modal {
+.popup-form .form-modal, .popup-form-edit .form-modal {
   width: 500px;
   height: 600px;
   background-color: #fff;
@@ -282,15 +318,15 @@ input[type='checkbox'] {
   border: 3px solid #ea6b15;
 }
 
-.popup-form .form-modal .label {
+.popup-form .form-modal .label, .popup-form-edit .form-modal .label {
   font-weight: bold;
 }
 
-.popup-form .form-modal .choice {
+.popup-form .form-modal .choice, .popup-form-edit .form-modal .choice {
   margin-top: 2rem;
 }
 
-.popup-form .form-modal .choice .flex {
+.popup-form .form-modal .choice .flex, .popup-form-edit .form-modal .choice .flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -300,7 +336,7 @@ input[type='checkbox'] {
   position: relative;
 }
 
-.popup-form .form-modal .btn-group {
+.popup-form .form-modal .btn-group, .popup-form-edit .form-modal .btn-group {
   position: absolute;
   bottom: 5rem;
   width: 85%;
@@ -309,5 +345,11 @@ input[type='checkbox'] {
   -ms-grid-columns: (1fr)[1];
       grid-template-columns: repeat(1, 1fr);
   gap: 10px;
+}
+
+.popup-form-edit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=app.css.map */

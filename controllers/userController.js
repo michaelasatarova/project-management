@@ -61,7 +61,7 @@ exports.home = function(req, res) {
     project.getAllProjects().then((data)=>{
        /*  console.log("toto su data z Home",data) */
         if(data){
-          console.log("toto su data",data)
+        /*   console.log("toto su data",data) */
           res.render('index', {data: data} )
         }else{
           res.send("on this page are no data")
@@ -69,10 +69,11 @@ exports.home = function(req, res) {
     }).catch((err)=>{
         res.send("problem")
     })
+
  
     //when user is not log in, flash tie errory z db automaticky vymaze po pouziti
   } else {
-    res.render('home-guest', {errors: req.flash('errors'), regErrors: req.flash('regErrors')})
+    res.render('login', {errors: req.flash('errors'), regErrors: req.flash('regErrors')})
   }
 }
 

@@ -1,0 +1,25 @@
+.login{
+    background-image:url("../../images/img-intro-home.png");
+    background-size: cover;
+    height: 100vh;
+    padding: 15%;
+
+    @include sm-down{
+       padding: 2rem;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+    }
+
+    .form-login{
+        width: 500px;
+        background-color: $color2;
+        border: 1px solid $color1;
+        padding: 50px;
+
+        @include sm-down{
+            width: 100%;
+            padding: 25px;
+        }
+    }
+}
