@@ -1,4 +1,5 @@
 const projectCollection = require('../db').db().collection("projects")
+const usersCollection = require('../db').db().collection("users")
 const ObjectID = require('mongodb').ObjectID
 
 const Project = function(data){
@@ -47,7 +48,9 @@ Project.prototype.getAllProjects = function(){
     return new Promise (async (resolve, reject) => {
         try{
             let allProjects = await projectCollection.find({}).toArray()
-              resolve(allProjects)
+            let allUsers = await usersCollection.find({}).toArray()
+            let arr3 = [...allProjects, ...allUsers]
+              resolve(arr3)
         }catch{
             reject()
         }

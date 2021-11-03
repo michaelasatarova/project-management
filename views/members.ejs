@@ -2,24 +2,80 @@
 <!--header-->
 
 
-
 <%- include('includes/navi')%>
 <!--navi-->
+
+<!--popup add new project-->
+<div id="modal-add-project" class="popup-form"> <div class="bg-modal" onclick="toggleModal()"></div>
+<form class="form-modal" action="/create-project" method="post">
+    <div class="h3 text-center pb-3">Add new post</div>
+    <label class="label" for="project_name">Project Name</label>
+    <input type="text" name="project_name"/>
+    <label class="label" for="project_description">Write a short description</label>
+    <input type="text" name="project_description"/>
+    <label class="label" for="deadline">Deadline</label>
+    <input type="date" name="deadline"/>
+    <label class="label" for="status">Status</label>
+    <select name="status">
+        <option value="new">New</option>
+        <option value="waiting">Waiting</option>
+        <option value="todo">To Do</option>
+        <option value="done">Done</option>
+    </select>
+
+    <p class="label">Choose who should work on this project</p>
+    <div class="choice">
+      <% data.forEach(function(member) { %>  
+        <div class="flex">
+            <input type="checkbox" name="coder" value="<%= member.username %>"/>
+            <p class="label" for="coder"><%= member.username %></p>
+        </div>
+        <% }) %>       
+    </div>
+    <div class="btn-group">
+        <button class="button main-btn" type="submit">SUBMIT</button>
+       <!--  <button class="button main-btn-border" onclick="toggleModal(e)">CANCLE</button> -->
+    </div>
+</form>
+</div>
+
+<!-- Add project to user pop up -->
+<div id="modal-add-project-to-user" class="popup-form"> <div class="bg-modal" onclick="toggleModalAddProjectToUser()"></div>
+<form class="form-modal" action="/add-project" method="post">
+    <div class=" text-center pb-2">ALL PROJECTS</div>
+    <div class="h3 text-center pb-3">ADD PROJECT TO THIS MEMBER</div>
+    <% data.forEach(function(project) {  %>
+        <% if (project.project_name)  {  %>
+      <div class="my-4 d-flex justify-content-between">
+          <label for="project_name"><%=project.project_name %></label>
+          <input type="checkbox" name="project_name">
+        </div> 
+    <% } %>
+    <% }) %>
+    <div class="btn-group">
+        <button class="button main-btn" type="submit">SUBMIT</button>
+       <!--  <button class="button main-btn-border" onclick="toggleModal(e)">CANCLE</button> -->
+    </div>
+</form>
+</div>
+
 
 
     <div class="custom-container">
         <div class="member-container">
             <!--MEMBER-->   
             <% data.forEach(function(member) { %>
+                <% if (member.username)  {  %>
             <div class="member">
-                <div class="left-panel">
-                    <img class="avatar-img" src="public/images/michaela.png" alt="binaryone">
+                <div class="left-panel"> 
+                    <img class="avatar-img" src="<%= user.avatar %>" alt="binaryone">
                     <div  class="h3  my-4"><%= member.username %></div>
                 </div>
                 <div class="right-panel">
                     <div class="h3">Working on:</div>
                     <ul>
-                        <li class="project-settings">Solicare - implementing xy
+                        <% member.projects.forEach(function(project){ %>
+                        <li class="project-settings"> <%= project.name %>
                             <div class="wrapper-tools-small mx-3">
                                 <div class="tool bg-success">
                                    <i class="fas fa-edit"></i>  
@@ -29,36 +85,23 @@
                                 </div>
                             </div>
                         </li>
-                        <li  class="project-settings">Zidatech - lorem ipsum text 
-                            <div class="wrapper-tools-small mx-3">
-                                <div class="tool bg-success">
-                                   <i class="fas fa-edit"></i>  
-                                </div>
-                                <div class="tool bg-danger">
-                                    <i class="fas fa-trash-alt"></i>
-                                </div>
-                            </div>
-                        </li>
-                        <li  class="project-settings">Lorem - short description
-                            <div class="wrapper-tools-small mx-3">
-                                <div class="tool bg-success">
-                                   <i class="fas fa-edit"></i>  
-                                </div>
-                                <div class="tool bg-danger">
-                                    <i class="fas fa-trash-alt"></i>
-                                </div>
-                            </div>
-                        </li>
+                        <% }) %>
+
+                        
                     </ul>
                 </div>
                 <div class="left-panel">
                     <div class="wrapper-tools">
-                        <div class="tool bg-success">
-                           <i class="fas fa-edit"></i>  
-                        </div>
-                        <div class="tool bg-danger">
-                            <i class="fas fa-trash-alt"></i>
-                        </div>
+						<a href="/user/<%= 0 %>/edit">
+                            <button class="button mx-1  tool bg-success">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </a>
+                        <form action="/member/<%= member._id %>/delete" method="POST">
+                            <button class="button  tool bg-danger">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </form>
                         <div class="tool bg-primary d-block d-sm-none">
                             <i class="fas fa-plus"></i>
                         </div>
@@ -66,12 +109,13 @@
                 </div>
                 <div class="right-panel">
                     <div class="wrapper-tools">
-                        <div class="tool bg-primary d-none d-sm-block">
-                            <i class="fas fa-plus"></i>
+                        <div class="tool bg-primary d-none d-sm-block" onclick="toggleModalAddProjectToUser()">
+                            <i   class="fas fa-plus"></i>
                         </div>
                     </div>
                 </div>
             </div>
+            <% } %>
             <% }) %>
 
         </div>

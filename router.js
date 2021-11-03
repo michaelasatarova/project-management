@@ -18,5 +18,6 @@ router.post('/project/:id/delete',  projectController.delete)
 
 //members related post
 router.get('/members', membersController.home)
+router.post('/member/:id/delete',  membersController.delete)
 
 module.exports = router

@@ -18,22 +18,12 @@
 
     <p class="label">Choose who should work on this project</p>
     <div class="choice">
+      <% data.forEach(function(member) { %>  
         <div class="flex">
-            <input type="checkbox" name="coder" value="michaela"/>
-            <p class="label" for="coder">Michaela</p>
+            <input type="checkbox" name="coder" value="<%= member.username %>"/>
+            <p class="label" for="coder"><%= member.username %></p>
         </div>
-        <div class="flex">
-            <input type="checkbox" name="coder" value="henry"/>
-            <p class="label" for="coder">Henry</p>
-        </div>
-        <div class="flex">
-            <input type="checkbox" name="coder" value="Adrian"/>
-            <p class="label" for="coder">Adrian</p>
-        </div>
-        <div class="flex">
-            <input type="checkbox" name="coder" value="Nadine"/>
-            <p class="label" for="coder">Nadine</p>
-        </div>
+        <% }) %>       
     </div>
     <div class="btn-group">
         <button class="button main-btn" type="submit">SUBMIT</button>

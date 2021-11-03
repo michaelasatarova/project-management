@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const Project = require('../models/Project')
+const Team = require('../models/Team')
 
 exports.mustBeLoggedIn = function(req, res, next){
   if(req.session.user){
@@ -59,9 +60,7 @@ exports.home = function(req, res) {
 
     let project = new Project(req.body)
     project.getAllProjects().then((data)=>{
-       /*  console.log("toto su data z Home",data) */
         if(data){
-          console.log("toto su data",data)
           res.render('index', {
             data: data,
             statusArray: ['todo', 'waiting', 'new', 'done' ]
@@ -69,10 +68,11 @@ exports.home = function(req, res) {
         }else{
           res.send("on this page are no data")
         }
+
+
     }).catch((err)=>{
         res.send("problem")
     })
-
  
     //when user is not log in, flash tie errory z db automaticky vymaze po pouziti
   } else {
